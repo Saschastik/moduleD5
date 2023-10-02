@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Delete post
+{% endblock title %}
+
+{% block content %}
+
+<h1>Do you really want to delete this post?</h1>
+<h2>{{ post.title|censor }}</h2>
+<h3>{{ post.timePost|date:'d-N-Y H:i' }} Author: {{ post.author }}</h3>
+<p>{{ post.textPost|censor|truncatewords:20 }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="confirm">
+</form>
+<hr>
+<a href="{% url 'new_s' post.id %}">
+    <button>back</button>
+</a>
+<a href="{% url 'news'  %}">
+    <button>main page</button>
+</a>
+
+{% endblock content %}

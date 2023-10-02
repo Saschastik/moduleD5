@@ -1,0 +1,23 @@
+{% extends "default.html" %}
+
+{% block content %}
+<h2>
+    Authorized User Page {{request.user.username}}
+</h2>
+
+<a class="btn btn-primary" href="{% url 'sign:logout' %}">
+Exit
+</a>
+
+{% if is_not_premium %}
+
+<a class="btn btn-info" href="{% url 'protected:upgrade' %}">
+I want Authors!
+</a>
+{% else %}
+<h3>
+    You are in the "Authors" group
+</h3>
+{% endif %}
+
+{% endblock content %}

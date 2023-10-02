@@ -1,0 +1,23 @@
+{% extends 'default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+Update post
+{% endblock title %}
+
+{% block content %}
+<h1>Changing the post</h1>
+<h2>Are you sure you want to change the post?</h2>
+<h3>{{ time_now|date:'M d Y' }}</h3>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <hr>
+    <input type="submit" value="change">
+</form>
+<br>
+<a href="{% url 'news' %}">
+    <button>back</button>
+</a>
+{% endblock content %}

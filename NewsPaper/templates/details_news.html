@@ -1,0 +1,22 @@
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+<h1>{{ new_s.title|censor }}</h1>
+<h3>{{ new_s.timePost|date:'d-N-Y H:i' }}</h3>
+<p>{{ new_s.textPost|censor }}</p>
+
+<hr>
+<a href="{% url 'post_update' new_s.id %}">
+    <button>change</button>
+</a>
+<a href="{% url 'post_delete' new_s.id %}">
+    <button>delete</button>
+</a>
+
+{% endblock content %}
